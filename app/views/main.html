@@ -1,23 +1,24 @@
 <div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
+  <h1>
+    <strong>
+      <span animate-increments="vm.indexing.totalBatches"></span>/1000
+    </strong>
+    batches
+  </h1>
+   <progressbar max="1000" value="vm.indexing.totalBatches" type="success">{{vm.indexing.totalBatches / 1000 | percentage}}</progressbar>
+  <br />
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+    How many batches have you indexed?<br />Record them here:
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <br />
+  <form>
+    <div class="input-group">
+      <input type="text" class="form-control batches" ng-model="vm.batches">
+      <span class="input-group-btn">
+        <button class="btn btn-success" ng-click="vm.record()">
+          Record <span class="glyphicon glyphicon-ok"></span>
+        </button>
+      </span>
+    </div>
+  </form>
 </div>
