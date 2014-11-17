@@ -18,41 +18,42 @@ function Incrementer() {
   // function link(scope, element, attr) {
   //
   // }
+}
 
-  function IncrementCtrl($scope, $interval) {
+/* @ngInject */
+function IncrementCtrl($scope, $interval) {
 
-    $scope.value = 0;
+  $scope.value = 0;
 
-    $scope.$watch('current()', function(current, old) {
-      animateChange(old, current, 50);
-    });
+  $scope.$watch('current()', function(current, old) {
+    animateChange(old, current, 50);
+  });
 
-    function animateChange(start, end, duration) {
-      start = start || 0;
-      end = end || 0;
+  function animateChange(start, end, duration) {
+    start = start || 0;
+    end = end || 0;
 
-      if (start !== end) {
+    if (start !== end) {
 
-        var range = end - start;
-        var current = start;
-        var increment = 1;
-        var step = Math.abs(Math.floor(duration / range));
+      var range = end - start;
+      var current = start;
+      var increment = 1;
+      var step = Math.abs(Math.floor(duration / range));
 
-        var stop = $interval(function() {
+      var stop = $interval(function() {
 
-          if (end > start) {
-            current += increment;
-          } else {
-            current -= increment;
-          }
+        if (end > start) {
+          current += increment;
+        } else {
+          current -= increment;
+        }
 
-          $scope.value = current;
+        $scope.value = current;
 
-          if (current === end) {
-            $interval.cancel(stop);
-          }
-        }, step);
-      }
+        if (current === end) {
+          $interval.cancel(stop);
+        }
+      }, step);
     }
   }
 }
