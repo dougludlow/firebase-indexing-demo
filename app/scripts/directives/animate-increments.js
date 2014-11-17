@@ -12,12 +12,7 @@ function Incrementer() {
     },
     template: '{{value}}',
     controller: IncrementCtrl
-      //link: link
   };
-
-  // function link(scope, element, attr) {
-  //
-  // }
 }
 
 /* @ngInject */
