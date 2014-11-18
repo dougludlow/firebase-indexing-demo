@@ -22,8 +22,8 @@
   <!-- Add your site or application content here -->
   <div class="container">
     <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <li class="active"><a ng-href="#">Home</a></li>
+      <ul class="nav nav-pills pull-right hidden-xs">
+        <li class="active"><a ng-href="#/">Home</a></li>
         <li><a ng-href="#/about">About</a></li>
       </ul>
       <h3 class="text-muted">
@@ -34,7 +34,11 @@
     <div ng-view=""></div>
 
     <div class="footer">
-      <p><span class="glyphicon glyphicon-heart"></span> from the Ludlow's</p>
+      <ul class="list-inline pull-right visible-xs">
+        <li><a ng-href="#/">Home</a></li>
+        <li><a ng-href="#/about">About</a></li>
+      </ul>
+      <p><span class="glyphicon glyphicon-heart"></span> <span class="hidden-xs">from the</span> Ludlow's</p>
     </div>
   </div>
 
