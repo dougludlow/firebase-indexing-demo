@@ -21,10 +21,6 @@ function dataservice($firebase, _) {
 
   function record(obj, count) {
 
-    if (!obj.totalBatches) {
-      obj.totalBatches = 0;
-    }
-
     if (!obj.batches) {
       obj.batches = [];
     }
@@ -38,12 +34,12 @@ function dataservice($firebase, _) {
 
   function total(batches) {
     var sum = _(batches)
-                  .filter('approved')
-                  .pluck('count')
-                  .reduce(function(sum, count) {
-                    return sum + parseInt(count, 10);
-                  }, 0)
-                  .valueOf();
+      .filter('approved')
+      .pluck('count')
+      .reduce(function(sum, count) {
+        return sum + parseInt(count, 10);
+      }, 0)
+      .valueOf();
     return sum;
   }
 }
