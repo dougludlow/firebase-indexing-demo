@@ -11,14 +11,23 @@
     How many batches have you indexed?<br />Record them here:
   </p>
   <br />
-  <form>
+  <form name="batches">
     <div class="input-group">
-      <input type="text" class="form-control batches" ng-model="vm.batches">
+      <input name="count" type="number" class="form-control batches" ng-model="vm.batches" ng-pattern="/^[1-9][0-9]*$/" min="1" max="25">
       <span class="input-group-btn">
         <button class="btn btn-success" ng-click="vm.record()">
           Record <span class="glyphicon glyphicon-ok"></span>
         </button>
       </span>
     </div>
+    <p class="text-danger" ng-show="batches.count.$error.min">
+      Enter a number greater than 0.
+    </p>
+    <p class="text-danger" ng-show="batches.count.$error.max">
+      Enter a number less than 25.
+    </p>
+    <p class="text-danger" ng-show="batches.count.$error.pattern && !batches.count.$error.min">
+      Enter an integer.
+    </p>
   </form>
 </div>
