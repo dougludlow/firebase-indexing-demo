@@ -21,6 +21,7 @@ angular
     'ui.bootstrap',
     'percentage'
   ])
+  .constant('_', window._)
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

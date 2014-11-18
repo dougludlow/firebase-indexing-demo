@@ -8,7 +8,7 @@ function Incrementer() {
   return {
     restrict: 'A',
     scope: {
-      current: '&animateIncrements'
+      current: '@animateIncrements'
     },
     template: '{{value}}',
     controller: IncrementCtrl
@@ -20,8 +20,8 @@ function IncrementCtrl($scope, $interval) {
 
   $scope.value = 0;
 
-  $scope.$watch('current()', function(current, old) {
-    animateChange(old, current, 50);
+  $scope.$watch('current', function(current, old) {
+    animateChange(+old, +current, 50);
   });
 
   function animateChange(start, end, duration) {

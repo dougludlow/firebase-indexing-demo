@@ -1,11 +1,11 @@
 <div class="jumbotron">
   <h1>
     <strong>
-      <span animate-increments="vm.indexing.totalBatches"></span>/1000
+      <span animate-increments="{{vm.sum = vm.total(vm.indexing.batches)}}"></span>/1000
     </strong>
     batches
   </h1>
-   <progressbar max="1000" value="vm.indexing.totalBatches" type="success">{{vm.indexing.totalBatches / 1000 | percentage}}</progressbar>
+   <progressbar max="1000" value="vm.sum" type="success">{{vm.sum / 1000 | percentage}}</progressbar>
   <br />
   <p class="lead">
     How many batches have you indexed?<br />Record them here:
