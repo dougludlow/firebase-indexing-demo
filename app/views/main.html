@@ -7,7 +7,7 @@
   </h1>
    <progressbar max="1000" value="vm.sum" type="success">{{vm.sum / 1000 | percentage}}</progressbar>
   <br class="hidden-xs" />
-  <p class="lead">
+  <p class="lead text-muted">
     How many batches have you indexed?<br />Record them here:
   </p>
   <br class="hidden-xs" />
@@ -33,7 +33,7 @@
     </p>
   </form>
 
-  <div class="alert alert-info alert-dismissible undo fade" role="alert" ng-show="vm.undoVisible">
+  <div class="alert alert-success alert-dismissible undo fade" role="alert" ng-show="vm.undoVisible">
     <button type="button" class="close" ng-click="vm.undoVisible = false"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     Successfully recorded <strong>{{vm.successBatches}}</strong> batches. <a class="alert-link" href="#/" ng-click="vm.undo()">Undo?</a>
   </div>

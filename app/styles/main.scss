@@ -1,5 +1,6 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
 @import "bootswatch/flatly/_variables.scss";
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
@@ -13,12 +14,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 
 }
+
 /* Space out content a bit */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
 
 }
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -27,6 +30,7 @@ body {
   padding-right: 15px;
 
 }
+
 /* Custom page header */
 .header {
   @media screen and (min-width: 768px) {
@@ -45,6 +49,7 @@ body {
   }
 
 }
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -52,10 +57,12 @@ body {
   border-top: 1px solid #e5e5e5;
 
 }
+
 .container-narrow > hr {
   margin: 30px 0;
 
 }
+
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
@@ -89,6 +96,7 @@ body {
   }
 
 }
+
 /* Supporting marketing content */
 .marketing {
   margin: 40px 0;
@@ -98,12 +106,14 @@ body {
   }
 
 }
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 
 }
+
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -127,6 +137,10 @@ input[type=number] {
   &.ng-hide-add, &.ng-hide-remove {
     transition: 0.25s linear all;
   }
+}
+
+.progress {
+  box-shadow: 0 0 85px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive: Portrait tablets and up */
