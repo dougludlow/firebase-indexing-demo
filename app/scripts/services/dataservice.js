@@ -2,7 +2,7 @@
 
 angular
   .module('indexingApp')
-  .service('dataservice', dataservice);
+  .factory('dataservice', dataservice);
 
 function dataservice($firebase, _, ipaddress) {
   var ref = new window.Firebase('https://indexing.firebaseio.com/');
@@ -20,7 +20,7 @@ function dataservice($firebase, _, ipaddress) {
       obj.$bindTo(scope, property);
     }
 
-    function record(count, ip) {
+    function record(count) {
       var obj = scope.$eval(property);
 
       if (!obj.batches) {
@@ -47,5 +47,5 @@ function dataservice($firebase, _, ipaddress) {
         .valueOf();
       return sum;
     }
-  }
+  };
 }
