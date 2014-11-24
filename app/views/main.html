@@ -32,4 +32,9 @@
       Enter an integer.
     </p>
   </form>
+
+  <div class="alert alert-info alert-dismissible undo fade" role="alert" ng-show="vm.undoVisible">
+    <button type="button" class="close" ng-click="vm.undoVisible = false"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    Successfully recorded <strong>{{vm.successBatches}}</strong> batches. <a class="alert-link" href="#/" ng-click="vm.undo()">Undo?</a>
+  </div>
 </div>
