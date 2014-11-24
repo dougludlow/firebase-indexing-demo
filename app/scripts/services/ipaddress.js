@@ -12,8 +12,8 @@ function ipaddress($http) {
   };
 
   function get() {
-    return $http.get(url).success(function(data){
-      return data.ip;
+    return $http.get(url).then(function(response){
+      return response.data.ip;
     });
   }
 }
