@@ -4,7 +4,7 @@ angular
   .module('indexingApp')
   .service('dataservice', dataservice);
 
-function dataservice($firebase, _) {
+function dataservice($firebase, _, ipaddress) {
   var ref = new window.Firebase('https://indexing.firebaseio.com/');
 
   return function (scope, property) {
@@ -20,17 +20,20 @@ function dataservice($firebase, _) {
       obj.$bindTo(scope, property);
     }
 
-    function record(count) {
+    function record(count, ip) {
       var obj = scope.$eval(property);
 
       if (!obj.batches) {
         obj.batches = [];
       }
 
-      obj.batches.push({
-        date: new Date().toISOString(),
-        count: count,
-        approved: true
+      ipaddress.get().then(function (ip) {
+        obj.batches.push({
+          date: new Date().toISOString(),
+          ip: ip,
+          count: count,
+          approved: true
+        });
       });
     }
 
@@ -38,7 +41,7 @@ function dataservice($firebase, _) {
       var sum = _(batches)
         .filter('approved')
         .pluck('count')
-        .reduce(function(sum, count) {
+        .reduce(function (sum, count) {
           return sum + parseInt(count, 10);
         }, 0)
         .valueOf();
