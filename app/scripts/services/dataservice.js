@@ -2,19 +2,20 @@
 
 angular
   .module('indexingApp')
-  .service('Dataservice', dataservice);
+  .service('dataservice', dataservice);
 
 function dataservice($firebase, _) {
   var ref = new window.Firebase('https://indexing.firebaseio.com/');
 
-  return Dataservice;
+  return function (scope, property) {
+    bind(scope, property);
 
-  function Dataservice(scope, property) {
-    bind();
-    this.record = record;
-    this.total = total;
+    return {
+      record: record,
+      total: total
+    };
 
-    function bind() {
+    function bind(scope, property) {
       var obj = $firebase(ref).$asObject();
       obj.$bindTo(scope, property);
     }

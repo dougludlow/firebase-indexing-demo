@@ -11,18 +11,18 @@ angular
   .module('indexingApp')
   .controller('MainCtrl', Main);
 
-function Main($scope, Dataservice) {
+function Main($scope, dataservice) {
   var vm = this;
-  var service = new Dataservice($scope, 'vm.indexing');
+  var ds = dataservice($scope, 'vm.indexing');
 
   vm.record = record;
-  vm.total = service.total;
+  vm.total = ds.total;
 
   function record() {
     var batches = parseInt(vm.batches);
 
     if (!isNaN(batches)) {
-      service.record(batches);
+      ds.record(batches);
       vm.batches = '';
     }
   }
