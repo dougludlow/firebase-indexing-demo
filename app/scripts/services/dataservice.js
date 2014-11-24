@@ -4,86 +4,63 @@ angular
   .module('indexingApp')
   .factory('dataservice', dataservice);
 
-function dataservice($firebase, _, ipaddress, uuid) {
-  var ref = new window.Firebase('https://indexing.firebaseio.com/');
+function dataservice($firebase, _, ipaddress) {
+  var ref = new window.Firebase('https://indexing.firebaseio.com/batches'),
+    batches = $firebase(ref).$asArray(),
+    last;
 
-  return function (scope, property) {
-    var last;
-    bind(scope, property);
+  return {
+    batches: batches,
+    record: record,
+    remove: remove,
+    undo: undo,
+    total: total,
+    getLast: getLast
+  };
 
-    return {
-      record: record,
-      remove: remove,
-      undo: undo,
-      total: total,
-      getLast: getLast
+  function record(count) {
+    var batch = {
+      date: new Date().toISOString(),
+      count: count,
+      approved: true
     };
 
-    function prop() {
-      var obj = scope.$eval(property);
+    return batches.$add(batch).then(function (ref) {
+      var b = $firebase(ref).$asObject();
 
-      if (!obj.batches) {
-        obj.batches = [];
-      }
-
-      return obj;
-    }
-
-    function bind(scope, property) {
-      var obj = $firebase(ref).$asObject();
-      obj.$bindTo(scope, property);
-    }
-
-    function record(count) {
-      var obj = prop();
-
-      var r = {
-        id: uuid.new(),
-        date: new Date().toISOString(),
-        count: count,
-        approved: true
-      };
-
-      last = r;
-      obj.batches.push(r);
+      // Save reference to last record added.
+      last = b;
 
       ipaddress.get().then(function (ip) {
-        r.ip = ip || 'unknown';
+        b.ip = ip || 'unknown';
+        b.$save();
       });
+
+      return b;
+    });
+  }
+
+  function remove(record) {
+    if (record && record.$id) {
+      batches.$remove(batches.$indexFor(record.$id));
     }
+  }
 
-    function undo() {
-      remove(getLast());
-    }
+  function getLast() {
+    return last || null;
+  }
 
-    function remove(record) {
-      if (!record) {
-        return;
-      }
+  function undo() {
+    remove(getLast());
+  }
 
-      var obj = prop();
-
-      if (angular.isString(record)) {
-        record = _.find(obj.batches, {'id': record});
-      }
-
-      if (angular.isObject(record)) {
-        obj.batches.splice(obj.batches.indexOf(record), 1);
-      }
-    }
-
-    function total(batches) {
-      return _(batches)
-        .filter('approved')
-        .pluck('count')
-        .reduce(function (sum, count) {
-          return sum + parseInt(count, 10);
-        }, 0)
-        .valueOf();
-    }
-
-    function getLast() {
-      return last || null;
-    }
-  };
+  function total(batches) {
+    return _(batches)
+      .filter('approved')
+      .pluck('count')
+      .reduce(function (sum, count) {
+        return sum + parseInt(count, 10);
+      }, 0)
+      .valueOf();
+  }
 }

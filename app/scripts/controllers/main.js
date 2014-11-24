@@ -11,21 +11,21 @@ angular
   .module('indexingApp')
   .controller('MainCtrl', Main);
 
-function Main($scope, $timeout, dataservice) {
+function Main($timeout, dataservice) {
   var vm = this;
-  var ds = dataservice($scope, 'vm.indexing');
 
+  vm.batches = dataservice.batches;
   vm.record = record;
-  vm.total = ds.total;
+  vm.total = dataservice.total;
   vm.undo = undo;
 
   function record() {
-    var batches = parseInt(vm.batches);
+    var count = parseInt(vm.count);
 
-    if (!isNaN(batches)) {
-      ds.record(batches);
-      vm.batches = '';
-      vm.successBatches = batches;
+    if (!isNaN(count)) {
+      dataservice.record(count);
+      vm.count = '';
+      vm.countSuccess = count;
       vm.undoVisible = false;
 
       $timeout(function(){
@@ -36,6 +36,6 @@ function Main($scope, $timeout, dataservice) {
 
   function undo() {
     vm.undoVisible = false;
-    ds.undo();
+    dataservice.undo();
   }
 }

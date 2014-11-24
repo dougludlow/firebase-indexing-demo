@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>
     <strong>
-      <span animate-increments="{{vm.sum = vm.total(vm.indexing.batches)}}"></span>/1000
+      <span animate-increments="{{vm.sum = vm.total(vm.batches)}}"></span>/1000
     </strong>
     batches
   </h1>
@@ -14,7 +14,7 @@
   <form name="batches">
 
     <div class="input-group">
-      <input name="count" type="number" class="form-control batches" ng-model="vm.batches" ng-pattern="/^[1-9][0-9]*$/" min="1" max="25">
+      <input name="count" type="number" class="form-control batches" ng-model="vm.count" ng-pattern="/^[1-9][0-9]*$/" min="1" max="25">
       <span class="input-group-btn">
         <button class="btn btn-success" ng-click="vm.record()">
           Record <span class="glyphicon glyphicon-ok"></span>
@@ -35,6 +35,6 @@
 
   <div class="alert alert-success alert-dismissible undo fade" role="alert" ng-show="vm.undoVisible">
     <button type="button" class="close" ng-click="vm.undoVisible = false"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    Successfully recorded <strong>{{vm.successBatches}}</strong> batches. <a class="alert-link" href="#/" ng-click="vm.undo()">Undo?</a>
+    Successfully recorded <strong>{{vm.countSuccess}}</strong> batches. <a class="alert-link" href="#/" ng-click="vm.undo()">Undo?</a>
   </div>
 </div>
