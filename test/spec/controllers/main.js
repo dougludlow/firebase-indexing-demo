@@ -11,12 +11,28 @@ describe('Controller: MainCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    MainCtrl = $controller('MainCtrl as vm', {
       $scope: scope
     });
   }));
 
-  //it('should attach a list of awesomeThings to the scope', function () {
-  //  expect(scope.awesomeThings.length).toBe(3);
-  //});
+  it('should add batches array when record is called', function () {
+
+    scope.vm.count = 1;
+    scope.vm.record().then(function() {
+      expect(scope.vm.batches.length).toBe(1);
+      done();
+    });
+  });
+
+  it('should show undo message when record is called', function () {
+
+    expect(scope.vm.undoVisible).toBe(undefined);
+
+    scope.vm.count = 1;
+    scope.vm.record().then(function() {
+      expect(scope.vm.undoVisible).toBe(true);
+      done();
+    });
+  });
 });
