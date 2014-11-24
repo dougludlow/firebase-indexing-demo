@@ -4,16 +4,30 @@ angular
   .module('indexingApp')
   .factory('dataservice', dataservice);
 
-function dataservice($firebase, _, ipaddress) {
+function dataservice($firebase, _, ipaddress, uuid) {
   var ref = new window.Firebase('https://indexing.firebaseio.com/');
 
   return function (scope, property) {
+    var last;
     bind(scope, property);
 
     return {
       record: record,
-      total: total
+      remove: remove,
+      undo: undo,
+      total: total,
+      getLast: getLast
     };
+
+    function prop() {
+      var obj = scope.$eval(property);
+
+      if (!obj.batches) {
+        obj.batches = [];
+      }
+
+      return obj;
+    }
 
     function bind(scope, property) {
       var obj = $firebase(ref).$asObject();
@@ -21,31 +35,45 @@ function dataservice($firebase, _, ipaddress) {
     }
 
     function record(count) {
-      var obj = scope.$eval(property);
+      var obj = prop();
 
-      if (!obj.batches) {
-        obj.batches = [];
-      }
+      var r = {
+        id: uuid.new(),
+        date: new Date().toISOString(),
+        count: count,
+        approved: true
+      };
+
+      last = r;
+      obj.batches.push(r);
 
       ipaddress.get().then(function (ip) {
-        obj.batches.push({
-          date: new Date().toISOString(),
-          ip: ip,
-          count: count,
-          approved: true
-        });
+        r.ip = ip || 'unknown';
       });
     }
 
+    function undo() {
+      remove(getLast());
+    }
+
+    function remove(record) {
+      if (!record) { return; }
+      var obj = prop();
+      obj.batches.splice(obj.batches.indexOf(record), 1);
+    }
+
     function total(batches) {
-      var sum = _(batches)
+      return _(batches)
         .filter('approved')
         .pluck('count')
         .reduce(function (sum, count) {
           return sum + parseInt(count, 10);
         }, 0)
         .valueOf();
-      return sum;
+    }
+
+    function getLast() {
+      return last || null;
     }
   };
 }
