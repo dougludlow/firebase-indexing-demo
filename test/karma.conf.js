@@ -26,6 +26,11 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/mockfirebase/dist/mockfirebase.js',
+      'bower_components/angularfire/dist/angularfire.js',
+      'bower_components/lodash/dist/lodash.js',
+      'bower_components/angular-bootstrap/ui-bootstrap.js',
+      'bower_components/angular-percentage-directive/percentage.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
