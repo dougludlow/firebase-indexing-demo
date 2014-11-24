@@ -57,9 +57,19 @@ function dataservice($firebase, _, ipaddress, uuid) {
     }
 
     function remove(record) {
-      if (!record) { return; }
+      if (!record) {
+        return;
+      }
+
       var obj = prop();
-      obj.batches.splice(obj.batches.indexOf(record), 1);
+
+      if (angular.isString(record)) {
+        record = _.find(obj.batches, {'id': record});
+      }
+
+      if (angular.isObject(record)) {
+        obj.batches.splice(obj.batches.indexOf(record), 1);
+      }
     }
 
     function total(batches) {
