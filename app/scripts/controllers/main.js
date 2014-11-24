@@ -23,12 +23,11 @@ function Main($timeout, dataservice) {
     var count = parseInt(vm.count);
 
     if (!isNaN(count)) {
-      dataservice.record(count);
       vm.count = '';
-      vm.countSuccess = count;
       vm.undoVisible = false;
 
-      $timeout(function(){
+      return dataservice.record(count).then(function(){
+        vm.countSuccess = count;
         vm.undoVisible = true;
       });
     }
