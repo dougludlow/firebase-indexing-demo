@@ -2,9 +2,9 @@
 
 angular
   .module('indexingApp')
-  .factory('IpAddress', IpAddress);
+  .factory('ipaddress', ipaddress);
 
-function IpAddress($http) {
+function ipaddress($http) {
   var url = 'http://freegeoip.net/json/';
 
   return {
@@ -12,7 +12,7 @@ function IpAddress($http) {
   };
 
   function get() {
-    $http.get(url).then(function(data){
+    return $http.get(url).success(function(data){
       return data.ip;
     });
   }
