@@ -19,7 +19,8 @@ angular
 
     'firebase',
     'ui.bootstrap',
-    'percentage'
+    'percentage',
+    'nvd3ChartDirectives'
   ])
   .constant('_', window._)
   .config(function ($routeProvider) {
@@ -32,6 +33,10 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/chart', {
+        templateUrl: 'views/chart.html',
+        controller: 'ChartCtrl'
       })
       .otherwise({
         redirectTo: '/'
