@@ -13,6 +13,7 @@
     "angular-touch": "~1.3.0",
     "angular-route": "~1.3.0",
     "angularfire": "~0.8.2",
+    "angularjs-nvd3-directives": "~0.0.7",
     "bootswatch": "~3.3.1",
     "angular-bootstrap": "~0.12.0",
     "angular-percentage-directive": "~1.0.2",
@@ -25,6 +26,7 @@
   "appPath": "app",
   "resolutions": {
     "bootstrap-sass-official": "~3.3.1",
-    "angular": "~1.3.0"
+    "angular": "~1.3.0",
+    "d3": "~3.4.1"
   }
 }
