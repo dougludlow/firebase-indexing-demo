@@ -11,7 +11,7 @@ angular
   .module('indexingApp')
   .controller('MainCtrl', Main);
 
-function Main($timeout, dataservice) {
+function Main(dataservice) {
   var vm = this;
 
   vm.batches = dataservice.batches;
