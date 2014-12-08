@@ -1,9 +1,28 @@
+
+<h2>Total Batches Indexed Over Time</h2>
+
 <nvd3-line-chart
-  data="vm.transform(vm.batches)"
+  data="vm.totalBatchesOverTime(vm.batches)"
   height="400"
   showXAxis="true"
   showYAxis="true"
   tooltips="true"
   interactive="true"
+  yAxisLabel="Total Batches"
+  xAxisLabel="Date"
+  xAxisTickFormat="vm.xAxisTickFormat()">
+</nvd3-line-chart>
+
+<h2>Batches Indexed Per Day</h2>
+
+<nvd3-line-chart
+  data="vm.batchesPerDay(vm.batches)"
+  height="400"
+  showXAxis="true"
+  showYAxis="true"
+  tooltips="true"
+  interactive="true"
+  yAxisLabel="Batches per Day"
+  xAxisLabel="Date"
   xAxisTickFormat="vm.xAxisTickFormat()">
 </nvd3-line-chart>

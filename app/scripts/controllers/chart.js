@@ -15,8 +15,9 @@ function ChartCtrl(_, dataservice) {
   var vm = this;
 
   vm.batches = dataservice.batches;
-  vm.transform = _.memoize(transform);
   vm.xAxisTickFormat = xAxisTickFormat;
+  vm.batchesPerDay = _.memoize(batchesPerDay);
+  vm.totalBatchesOverTime = _.memoize(totalBatchesOverTime);
 
   function xAxisTickFormat() {
     return function(d) {
@@ -24,11 +25,11 @@ function ChartCtrl(_, dataservice) {
     };
   }
 
-  function transform(batches) {
+  function batchesPerDay(batches) {
 
     var values = [];
 
-    if (batches && batches.length)
+    if (batches && batches.length) {
       values = _(batches)
         .where(function(b) {
           return b.date && b.count;
@@ -45,10 +46,44 @@ function ChartCtrl(_, dataservice) {
 
           return values;
         }, []);
+    }
 
     return [{
       key: 'Batches',
-      values: values
+      values: values,
+      area: true
+    }];
+  }
+
+  function totalBatchesOverTime(batches) {
+    var values = [], count = 0;
+
+    if (batches && batches.length) {
+      values = _(batches)
+        .where(function(b) {
+          return b.date && b.count;
+        })
+        .groupBy(function(b) {
+          return b.date.substring(0, 10); //by day
+        })
+        .reduce(function(values, batches, key) {
+
+          count += _(batches)
+            .pluck('count')
+            .reduce(function(total, count) {
+              return total + count;
+            });
+
+          values.push([new Date(key), count]);
+
+          return values;
+        }, []);
+    }
+
+    return [{
+      key: 'Batches',
+      values: values,
+      area: true
     }];
   }
 }
