@@ -1,7 +1,9 @@
 <nvd3-line-chart
-  data="vm.batches"
+  data="vm.transform(vm.batches)"
+  height="400"
   showXAxis="true"
   showYAxis="true"
   tooltips="true"
-  interactive="true">
+  interactive="true"
+  xAxisTickFormat="vm.xAxisTickFormat()">
 </nvd3-line-chart>

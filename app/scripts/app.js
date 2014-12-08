@@ -36,7 +36,8 @@ angular
       })
       .when('/chart', {
         templateUrl: 'views/chart.html',
-        controller: 'ChartCtrl'
+        controller: 'ChartCtrl',
+        controllerAs: 'vm'
       })
       .otherwise({
         redirectTo: '/'
