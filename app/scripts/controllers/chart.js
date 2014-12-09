@@ -16,13 +16,26 @@ function ChartCtrl(_, dataservice) {
 
   vm.batches = dataservice.batches;
   vm.xAxisTickFormat = xAxisTickFormat;
-  vm.batchesPerDay = _.memoize(batchesPerDay);
-  vm.totalBatchesOverTime = _.memoize(totalBatchesOverTime);
+  vm.data = _.memoize(data);
 
   function xAxisTickFormat() {
     return function(d) {
       return window.d3.time.format('%m/%d/%y')(new Date(d));
     };
+  }
+
+  function data(batches) {
+    return [{
+      key: 'Total Batches',
+      values: totalBatchesOverTime(batches),
+      color: '#18bc9c',
+      area: true
+    }, {
+      key: 'Batches Per Day',
+      values: batchesPerDay(batches),
+      color: '#3498Db',
+      area: true
+    }];
   }
 
   function batchesPerDay(batches) {
@@ -48,12 +61,7 @@ function ChartCtrl(_, dataservice) {
         }, []);
     }
 
-    return [{
-      key: 'Batches',
-      values: values,
-      color: '#18bc9c',
-      area: true
-    }];
+    return values;
   }
 
   function totalBatchesOverTime(batches) {
@@ -81,11 +89,6 @@ function ChartCtrl(_, dataservice) {
         }, []);
     }
 
-    return [{
-      key: 'Batches',
-      values: values,
-      color: '#18bc9c',
-      area: true
-    }];
+    return values;
   }
 }
