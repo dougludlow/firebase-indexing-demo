@@ -51,6 +51,7 @@ function ChartCtrl(_, dataservice) {
     return [{
       key: 'Batches',
       values: values,
+      color: '#18bc9c',
       area: true
     }];
   }
@@ -83,6 +84,7 @@ function ChartCtrl(_, dataservice) {
     return [{
       key: 'Batches',
       values: values,
+      color: '#18bc9c',
       area: true
     }];
   }
