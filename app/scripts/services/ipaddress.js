@@ -5,7 +5,7 @@ angular
   .factory('ipaddress', ipaddress);
 
 function ipaddress($http) {
-  var url = 'http://freegeoip.net/json/';
+  var url = 'http://www.telize.com/jsonip';
 
   return {
     get: get
