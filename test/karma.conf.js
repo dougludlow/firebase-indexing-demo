@@ -31,6 +31,7 @@ module.exports = function(config) {
       'bower_components/lodash/dist/lodash.js',
       'bower_components/angular-bootstrap/ui-bootstrap.js',
       'bower_components/angular-percentage-directive/percentage.js',
+      'bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
