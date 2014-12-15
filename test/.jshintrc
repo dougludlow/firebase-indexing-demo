@@ -29,8 +29,8 @@
     "expect": false,
     "inject": false,
     "it": false,
+    "done": false,
     "jasmine": false,
     "spyOn": false
   }
 }
-
