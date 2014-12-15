@@ -21,7 +21,7 @@ function IncrementCtrl($scope, $interval) {
   $scope.value = 0;
 
   $scope.$watch('current', function(current, old) {
-    animateChange(+old, +current, 50);
+    animateChange(+old, +current, 100);
   });
 
   function animateChange(start, end, duration) {
@@ -32,23 +32,33 @@ function IncrementCtrl($scope, $interval) {
 
       var range = end - start;
       var current = start;
-      var increment = 1;
+      var increment = Math.abs(Math.ceil(range / duration));
       var step = Math.abs(Math.floor(duration / range));
 
       var stop = $interval(function() {
 
         if (end > start) {
           current += increment;
+          if (current > end) {
+            current = end;
+          }
         } else {
           current -= increment;
+          if (current < end) {
+            current = end;
+          }
         }
-
-        $scope.value = current;
 
         if (current === end) {
           $interval.cancel(stop);
         }
+
+        $scope.value = current;
+
       }, step);
+    }
+    else {
+      $scope.value = end;
     }
   }
 }
