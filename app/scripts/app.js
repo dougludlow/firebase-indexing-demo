@@ -19,6 +19,7 @@ angular
 
     'firebase',
     'ui.bootstrap',
+    'ui.route',
     'percentage',
     'nvd3ChartDirectives'
   ])

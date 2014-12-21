@@ -24,9 +24,9 @@
   <div class="container">
     <div class="header">
       <ul class="nav nav-pills pull-right hidden-xs">
-        <li class="active"><a ng-href="#/">Home</a></li>
-        <li><a ng-href="#/chart">Chart</a></li>
-        <li><a ng-href="#/about">About</a></li>
+        <li ui-route="/" ng-class="{ active: $uiRoute }"><a ng-href="#/">Home</a></li>
+        <li ui-route="/chart" ng-class="{ active: $uiRoute }"><a ng-href="#/chart">Chart</a></li>
+        <li ui-route="/about" ng-class="{ active: $uiRoute }"><a ng-href="#/about">About</a></li>
       </ul>
       <h3 class="text-muted">
         Fairview Ward Indexing Challenge
@@ -37,9 +37,9 @@
 
     <div class="footer">
       <ul class="list-inline pull-right visible-xs">
-        <li><a ng-href="#/">Home</a></li>
-        <li><a ng-href="#/chart">Chart</a></li>
-        <li><a ng-href="#/about">About</a></li>
+        <li ui-route="/" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/">Home</a></li>
+        <li ui-route="/chart" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/chart">Chart</a></li>
+        <li ui-route="/about" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/about">About</a></li>
       </ul>
       <p class="text-muted">
         &copy; 2014 <a href="http://dougludlow.info/" class="text-muted">Doug Ludlow</a>
@@ -84,6 +84,7 @@
   <script src="bower_components/nvd3/nv.d3.js"></script>
   <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-utils/route.js"></script>
   <script src="bower_components/angular-percentage-directive/percentage.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.js"></script>
   <!-- endbower -->
