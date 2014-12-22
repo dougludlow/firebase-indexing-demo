@@ -30,6 +30,7 @@ module.exports = function(config) {
       'bower_components/angularfire/dist/angularfire.js',
       'bower_components/lodash/dist/lodash.js',
       'bower_components/angular-bootstrap/ui-bootstrap.js',
+      'bower_components/angular-ui-utils/route.js',
       'bower_components/angular-percentage-directive/percentage.js',
       'bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js',
       'app/scripts/**/*.js',
