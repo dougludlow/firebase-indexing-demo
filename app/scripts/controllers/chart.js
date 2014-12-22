@@ -48,7 +48,10 @@ function ChartCtrl(_, dataservice) {
           return b.date && b.count;
         })
         .groupBy(function(b) {
-            return b.date.substring(0, 10); //by day
+            var date = new Date(b.date);
+            date.setHours(0,0,0,0);
+            date.setMinutes(date.getTimezoneOffset());
+            return date.toDateString();
         })
         .reduce(function(values, batches, key) {
           values.push([new Date(key), _(batches)
@@ -73,7 +76,10 @@ function ChartCtrl(_, dataservice) {
           return b.date && b.count;
         })
         .groupBy(function(b) {
-          return b.date.substring(0, 10); //by day
+          var date = new Date(b.date);
+          date.setHours(0,0,0,0);
+          date.setMinutes(date.getTimezoneOffset());
+          return date.toDateString();
         })
         .reduce(function(values, batches, key) {
 
