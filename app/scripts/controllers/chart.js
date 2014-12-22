@@ -26,12 +26,12 @@ function ChartCtrl(_, dataservice) {
 
   function data(batches) {
     return [{
-      key: 'Total Batches',
+      key: 'Total batches',
       values: totalBatchesOverTime(batches),
       color: '#18bc9c',
       area: true
     }, {
-      key: 'Batches Per Day',
+      key: 'Batches per day',
       values: batchesPerDay(batches),
       color: '#3498Db',
       area: true
