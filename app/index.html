@@ -26,6 +26,7 @@
       <ul class="nav nav-pills pull-right hidden-xs">
         <li ui-route="/" ng-class="{ active: $uiRoute }"><a ng-href="#/">Home</a></li>
         <li ui-route="/chart" ng-class="{ active: $uiRoute }"><a ng-href="#/chart">Chart</a></li>
+        <li ui-route="/entries" ng-class="{ active: $uiRoute }"><a ng-href="#/entries">Entries</a></li>
         <li ui-route="/about" ng-class="{ active: $uiRoute }"><a ng-href="#/about">About</a></li>
       </ul>
       <h3 class="text-muted">
@@ -39,6 +40,7 @@
       <ul class="list-inline pull-right visible-xs">
         <li ui-route="/" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/">Home</a></li>
         <li ui-route="/chart" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/chart">Chart</a></li>
+        <li ui-route="/entries" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/entries">Entries</a></li>
         <li ui-route="/about" ng-class="{ 'text-info': $uiRoute }"><a ng-href="#/about">About</a></li>
       </ul>
       <p class="text-muted">
@@ -85,6 +87,7 @@
   <script src="bower_components/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/angular-ui-utils/route.js"></script>
+  <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
   <script src="bower_components/angular-percentage-directive/percentage.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.js"></script>
   <!-- endbower -->
@@ -93,9 +96,10 @@
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <!-- fileblock:js app -->
   <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/about.js"></script>
   <script src="scripts/controllers/chart.js"></script>
-  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/entries.js"></script>
   <script src="scripts/directives/animate-increments.js"></script>
   <script src="scripts/services/dataservice.js"></script>
   <script src="scripts/services/ipaddress.js"></script>

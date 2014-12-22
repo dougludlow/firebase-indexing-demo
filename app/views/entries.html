@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h1>Entries <small>by date</small></h1>
+</div>
+
+<table class="entries table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>IP</th>
+      <th>Count</th>
+      <th>Approved?</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="batches in vm.batches | groupBy:'date | date:\'shortDate\'' | toArray:true | orderBy: 'date'">
+    <tr>
+      <th>{{batches.$key}}</th>
+      <td colspan="3"></td>
+    </tr>
+    <tr ng-repeat="b in batches">
+      <td class="date">{{b.date | date:'h:mm a'}}</td>
+      <td>
+        <a ng-if="b.ip" ng-href="http://www.geoiptool.com/en/?ip={{b.ip}}">
+          {{b.ip}}
+        </a>
+        <i class="text-muted" ng-if="!b.ip">unknown</i>
+      </td>
+      <td>{{b.count}}</td>
+      <td>
+        <input type="checkbox" disabled checked="{{b.approved}}">
+      </td>
+    </tr>
+  </tbody>
+</table>

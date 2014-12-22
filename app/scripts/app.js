@@ -20,6 +20,7 @@ angular
     'firebase',
     'ui.bootstrap',
     'ui.route',
+    'angular.filter',
     'percentage',
     'nvd3ChartDirectives'
   ])
@@ -38,6 +39,11 @@ angular
       .when('/chart', {
         templateUrl: 'views/chart.html',
         controller: 'ChartCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/entries', {
+        templateUrl: 'views/entries.html',
+        controller: 'EntriesCtrl',
         controllerAs: 'vm'
       })
       .otherwise({

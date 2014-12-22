@@ -60,7 +60,6 @@ body {
 
 .container-narrow > hr {
   margin: 30px 0;
-
 }
 
 /* Main marketing message and sign up button */
@@ -141,6 +140,16 @@ input[type=number] {
 
 .progress {
   box-shadow: 0 0 85px rgba(0, 0, 0, 0.5);
+}
+
+table.entries {
+  th, td {
+    text-align: center;
+  }
+
+  td.date {
+    text-transform: lowercase;
+  }
 }
 
 /* Responsive: Portrait tablets and up */
