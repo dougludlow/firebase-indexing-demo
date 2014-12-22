@@ -11,13 +11,12 @@
       <th>Date</th>
       <th>IP</th>
       <th>Count</th>
-      <th>Approved?</th>
     </tr>
   </thead>
   <tbody ng-repeat="batches in vm.batches | groupBy:'date | date:\'shortDate\'' | toArray:true | orderBy: 'date'">
     <tr>
       <th>{{batches.$key}}</th>
-      <td colspan="3"></td>
+      <td colspan="2"></td>
     </tr>
     <tr ng-repeat="b in batches">
       <td class="date">{{b.date | date:'h:mm a'}}</td>
@@ -28,9 +27,6 @@
         <i class="text-muted" ng-if="!b.ip">unknown</i>
       </td>
       <td>{{b.count}}</td>
-      <td>
-        <input type="checkbox" disabled checked="{{b.approved}}">
-      </td>
     </tr>
   </tbody>
 </table>
